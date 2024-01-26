@@ -36,6 +36,10 @@ const BookingForm = ({ status }: BookingFormProps) => {
         <div className="mt-5 bg-white p-5">
             <Head title="Bookings" />
 
+            <h1 className="font-semibold text-xl text-gray-800 leading-tight mb-2">
+                Bookings
+            </h1>
+
             {status && (
                 <p
                     className={`mb-2 ${

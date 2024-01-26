@@ -1,7 +1,7 @@
-type TableProps = {
+type TableProps<T> = {
     headers: string[];
     onHeaderClick: () => void;
-    data: [];
+    data: T[];
 };
 
 const Table = ({ headers, onHeaderClick, data }: TableProps) => {

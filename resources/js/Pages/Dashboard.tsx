@@ -1,7 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm } from "@inertiajs/react";
-import { PageProps } from "@/types";
-import { useState } from "react";
+import { PageProps, UnavailableSlotsProps } from "@/types";
 import useSortableData from "@/Hooks/useSortableData";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
@@ -9,12 +8,17 @@ import Datepicker from "@/Components/Datepicker";
 import InputError from "@/Components/InputError";
 import { FormEventHandler } from "react";
 import Table from "@/Components/Table";
+import { BookingProps } from "../types/index";
 
 export default function Dashboard({
     auth,
     bookings,
     unavailableSlots,
-}: PageProps) {
+}: PageProps<{
+    bookings: BookingProps[];
+    unavailableSlots: UnavailableSlotsProps[];
+}>) {
+    console.log(unavailableSlots);
     const { items, requestSort, sortConfig } = useSortableData(bookings);
     const { data, setData, post, processing, errors, reset } = useForm({
         date_and_time: "",

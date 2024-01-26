@@ -2,7 +2,10 @@ import { Link, Head } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import BookingForm from "@/Partials/BookingForm";
 
-export default function Welcome({ auth, status }: PageProps) {
+export default function Welcome({
+    auth,
+    status,
+}: PageProps<{ status: { type: "success" | "error"; message: string } }>) {
     return (
         <>
             <Head title="Welcome" />

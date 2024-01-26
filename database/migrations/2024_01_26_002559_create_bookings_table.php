@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->string('vehicle_make');
             $table->string('vehicle_model');
             $table->string('date_and_time');
