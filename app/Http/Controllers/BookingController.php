@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BookingConfirmation;
 use App\Models\Booking;
 use App\Models\UnavailableSlot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -35,7 +37,9 @@ class BookingController extends Controller
             return back();
         }
 
-        Booking::create($request->all());
+        $booking = Booking::create($request->all());
+
+        Mail::to(['paul@haydensgarage.com', $booking->email])->send(new BookingConfirmation($booking));
 
         $request->session()->put('status', ['type' => 'success', 'message' => 'Booking created successfully!']);
 
